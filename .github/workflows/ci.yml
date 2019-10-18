@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [12.x]
         webpack-version: [latest, next, webpack-3]
 
     steps:
@@ -20,8 +20,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: yarn, build, and test
       run: |
+        yarn add webpack@${WEBPACK_VERSION}
         yarn
-        yarn install webpack@${WEBPACK_VERSION}
         yarn list webpack
         yarn test
       env:
