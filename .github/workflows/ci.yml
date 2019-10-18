@@ -21,10 +21,9 @@ jobs:
     - name: yarn, build, and test
       run: |
         yarn
-        yarn install webpack@${INPUT_WEBPACK_VERSION}
+        yarn install webpack@${WEBPACK_VERSION}
         yarn list webpack
         yarn test
-      with:
-        webpack-version: ${{ matrix.webpack-version }}
       env:
         CI: true
+        WEBPACK_VERSION: ${{ matrix.webpack-version }}
